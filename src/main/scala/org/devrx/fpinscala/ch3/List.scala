@@ -42,6 +42,9 @@ object List { // `List` companion object. Contains functions for creating and wo
   def append2[A](a1: List[A], a2: List[A]): List[A] =
     foldRight(a1, a2)((h, t) => Cons(h, t))
 
+  def flatten[A](ls: List[List[A]]): List[A] =
+    foldRight(ls, Nil: List[A])(append2)
+
   def foldRight[A,B](as: List[A], z: B)(f: (A, B) => B): B = // Utility functions
     as match {
       case Nil => z

@@ -127,4 +127,15 @@ class ListSpec extends WordSpec with Matchers {
       List.append2(Nil, Nil) shouldBe Nil
     }
   }
+
+  "flatten" should {
+    "flatten 3 lists" in {
+      List.flatten(List(
+        List(1),
+        List(2,3),
+        List(),
+        List(4,5,6)
+      )) shouldBe List(1,2,3,4,5,6)
+    }
+  }
 }
