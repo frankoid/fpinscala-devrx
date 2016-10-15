@@ -60,7 +60,12 @@ object List { // `List` companion object. Contains functions for creating and wo
     case Cons(x, xs) => Cons(h, xs)
   }
 
-  def drop[A](l: List[A], n: Int): List[A] = sys.error("todo")
+  def drop[A](l: List[A], n: Int): List[A] = (l, n) match {
+    case (_, n) if (n < 0) => throw new IllegalArgumentException("n cannot be negative")
+    case (l, 0) => l
+    case (Cons(x, xs), n) => drop(xs, n - 1)
+    case _ => throw new UnsupportedOperationException("Can't drop more elements than the list contains")
+  }
 
   def dropWhile[A](l: List[A], f: A => Boolean): List[A] = sys.error("todo")
 

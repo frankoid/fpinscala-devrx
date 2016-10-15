@@ -24,4 +24,21 @@ class ListSpec extends WordSpec with Matchers {
       }
     }
   }
+
+  "drop" should {
+    "drop first n elements" in {
+      List.drop(List(1,2,3), 2) shouldBe List(3)
+      List.drop(List(1,2,3), 3) shouldBe List()
+    }
+    "throw an exception when there aren't enough elements" in {
+      intercept[UnsupportedOperationException] {
+        List.drop(List(1, 2), 3)
+      }
+    }
+    "throw an exception when n is negative" in {
+      intercept[IllegalArgumentException] {
+        List.drop(List(1, 2), -1)
+      }
+    }
+  }
 }
