@@ -55,4 +55,16 @@ class ListSpec extends WordSpec with Matchers {
       List.dropWhile[Int](List(1, 2, 3), _ < 10) shouldBe Nil
     }
   }
+
+  "init" should {
+    "return all but the last element of a List" in {
+      List.init(List(1,2,3,4)) shouldBe List(1,2,3)
+    }
+
+    "throw UnsupportedOperationException for an empty list" in {
+      intercept[UnsupportedOperationException] {
+        List.init(List())
+      }
+    }
+  }
 }
