@@ -95,4 +95,18 @@ class ListSpec extends WordSpec with Matchers {
       lengthL(List(3,4,5,6)) shouldBe 4
     }
   }
+
+  Seq[(String, List[Int] => List[Int])](
+    ("reverse", List.reverse),
+    ("reverse2", List.reverse2)
+  ).foreach { case (name, f) =>
+    name should {
+      "return empty list unmodified" in {
+        f(Nil) shouldBe Nil
+      }
+      "reverse non-empty list" in {
+        f(List(1, 2, 3, 4, 5)) shouldBe List(5, 4, 3, 2, 1)
+      }
+    }
+  }
 }
