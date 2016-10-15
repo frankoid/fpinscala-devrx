@@ -67,4 +67,10 @@ class ListSpec extends WordSpec with Matchers {
       }
     }
   }
+
+  "length" should {
+    "return the length of the List" in {
+      List.length(List(1,2,3)) shouldBe 3
+    }
+  }
 }
