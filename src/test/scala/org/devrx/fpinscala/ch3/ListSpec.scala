@@ -80,5 +80,19 @@ class ListSpec extends WordSpec with Matchers {
 
       productL(List(2.0, 4.0, 3.0)) shouldBe 24.0
     }
+
+    "be usable to implement sum" in {
+      def sumL(ns: List[Int]) =
+        List.foldLeft(ns, 0)((x,y) => x + y)
+
+      sumL(List(3,4,5)) shouldBe 12
+    }
+
+    "be usable to implement length" in {
+      def lengthL[A](l: List[A]): Int =
+        List.foldLeft(l, 0)((acc, _) => acc + 1)
+
+      lengthL(List(3,4,5,6)) shouldBe 4
+    }
   }
 }
