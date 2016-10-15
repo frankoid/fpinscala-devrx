@@ -49,6 +49,16 @@ object List { // `List` companion object. Contains functions for creating and wo
   def product2(ns: List[Double]) =
     foldRight(ns, 1.0)(_ * _) // `_ * _` is more concise notation for `(x,y) => x * y`; see sidebar
 
+  private class ZeroException extends Exception
+
+  def product3(ns: List[Double]) =
+    try {
+      foldRight(ns, 1.0)((x, y) =>
+        if (x == 0.0) throw new ZeroException
+        else x * y)
+    } catch {
+      case _: ZeroException => 0.0
+    }
 
   def tail[A](l: List[A]): List[A] = l match {
     case Nil => throw new UnsupportedOperationException("Can't take the tail of an empty list")
