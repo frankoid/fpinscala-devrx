@@ -109,4 +109,22 @@ class ListSpec extends WordSpec with Matchers {
       }
     }
   }
+
+  "append2" should {
+    "append lists" in {
+      List.append2(List(1,2), List(3,4,5)) shouldBe List(1,2,3,4,5)
+    }
+
+    "handle a1 being empty" in {
+      List.append2(Nil, List("a", "b")) shouldBe List("a", "b")
+    }
+
+    "handle a2 being empty" in {
+      List.append2(List("x", "y"), Nil) shouldBe List("x", "y")
+    }
+
+    "handle both lists being empty" in {
+      List.append2(Nil, Nil) shouldBe Nil
+    }
+  }
 }
