@@ -67,7 +67,10 @@ object List { // `List` companion object. Contains functions for creating and wo
     case _ => throw new UnsupportedOperationException("Can't drop more elements than the list contains")
   }
 
-  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = sys.error("todo")
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Cons(x, xs) => if (f(x)) dropWhile(xs, f) else l
+    case Nil => Nil
+  }
 
   def init[A](l: List[A]): List[A] = sys.error("todo")
 

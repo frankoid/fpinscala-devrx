@@ -41,4 +41,18 @@ class ListSpec extends WordSpec with Matchers {
       }
     }
   }
+
+  "dropWhile" should {
+    "drop elements while they match f" in {
+      List.dropWhile[Int](List(9,8,7,6,7,8), _ > 6) shouldBe List(6,7,8)
+    }
+
+    "return Nil when passed Nil" in {
+      List.dropWhile[Int](Nil, _ > 6) shouldBe Nil
+    }
+
+    "return Nil when passed a predicate that matches all elements" in {
+      List.dropWhile[Int](List(1, 2, 3), _ < 10) shouldBe Nil
+    }
+  }
 }
