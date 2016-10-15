@@ -1,0 +1,19 @@
+reverse(List(1,2,3,4))
+
+foldLeft(List(1,2,3,4), Nil)((as, a) => Cons(a, as))
+
+as=List(1,2,3,4), z=Nil, f=(as, a) => Cons(a,as)
+x=1, xs=List(2,3,4)
+foldLeft(List(2,3,4), Cons(1, Nil))(f)
+
+as=List(2,3,4), z=Cons(1, Nil)
+foldLeft(List(3,4), Cons(2, Cons(1, Nil)))(f)
+
+as=List(3,4), z=Cons(2, Cons(1, Nil))
+foldLeft(List(4), Cons(3, Cons(2, Cons(1, Nil))))(f)
+
+as=List(4), z=Cons(3, Cons(2, Cons(1, Nil)))
+foldLeft(Nil, Cons(4,Cons(3, Cons(2, Cons(1, Nil)))))(f)
+
+as=Cons(4,Cons(3, Cons(2, Cons(1, Nil))))
+=> Cons(4,Cons(3, Cons(2, Cons(1, Nil))))
