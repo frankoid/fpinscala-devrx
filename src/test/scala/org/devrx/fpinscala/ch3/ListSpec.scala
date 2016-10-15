@@ -8,7 +8,7 @@ class ListSpec extends WordSpec with Matchers {
       List.tail(List(1,2,3)) shouldBe List(2,3)
     }
     "throw an exception for an empty list" in {
-      intercept[IllegalArgumentException] {
+      intercept[UnsupportedOperationException] {
         List.tail(List())
       }
     }

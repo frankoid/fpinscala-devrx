@@ -51,7 +51,7 @@ object List { // `List` companion object. Contains functions for creating and wo
 
 
   def tail[A](l: List[A]): List[A] = l match {
-    case Nil => throw new IllegalArgumentException("Can't take the tail of an empty list")
+    case Nil => throw new UnsupportedOperationException("Can't take the tail of an empty list")
     case Cons(x, xs) => xs
   }
 
