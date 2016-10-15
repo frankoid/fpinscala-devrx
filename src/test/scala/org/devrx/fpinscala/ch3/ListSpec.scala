@@ -73,4 +73,12 @@ class ListSpec extends WordSpec with Matchers {
       List.length(List(1,2,3)) shouldBe 3
     }
   }
+
+  "foldLeft" should {
+    "be usable to implement product" in {
+      def productL(ns: List[Double]) = List.foldLeft(ns, 1.0)(_ * _)
+
+      productL(List(2.0, 4.0, 3.0)) shouldBe 24.0
+    }
+  }
 }
